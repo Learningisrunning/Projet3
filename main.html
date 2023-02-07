@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body class ="body_page">
+    
+        <header class ="header">
+            <h1 class ="title">JustStreamIt</h1>
+            <nav class ="main_nav">
+                <ul>
+                    <li>
+                        Accueil
+                    </li>
+                    <li>
+                        Catégories
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        
+        <main id="primary_movie">
+
+        <div id="primary_infos">
+            <a href="#modal" class="js-modal"><img id ="picture_best_movie"></a>
+
+            <div id="primary_movies_first_page">
+                <h2 id ="title_best_movie"></h2>
+                <p id ="description_best_movie"></p>
+            </div>
+        </div>
+        </main>
+
+
+        <section class="category">
+            <div class ="title_and_movies">
+            <h3>Les films les plus aimés</h3>
+            <ul id ="premiere_categorie" class ="films_categories">
+                
+            </ul>
+            </div>
+        </section>
+        <section class="category">
+            <div class ="title_and_movies">
+                <h3>Les films d'action</h3>
+                <ul id ="deuxieme_categorie" class ="films_categories">
+                    
+                </ul>
+            </div>
+        </section>
+        <section class="category">
+            <div class ="title_and_movies">
+                <h3>Les films d'aventure</h3>
+                <div class ="slider">
+                <button>◁</button>
+                <ul id ="troisieme_categorie" class ="films_categories">
+                    
+                </ul>
+                <button>▷</button>
+                </div>
+            </div>
+        </section>
+        <section class="category">
+            <div class ="title_and_movies">
+                <h3>Les films de drama</h3>
+                <ul id ="quatrieme_categorie" class ="films_categories">
+                    
+                </ul>
+            </div>
+        </section>
+
+        <aside id="modal" class="modal">
+            <div class="open-modal modal-overlay"></div>
+            <div  class="modal_informations">
+                <button class="open-modal btn-modal">X</button>
+                <div id="infos_modal"></div>
+            </div>
+        </aside>
+        <script src="./main.js"></script>
+        <footer></footer>
+
+
+    </body>
+</html>
