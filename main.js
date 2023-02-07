@@ -171,15 +171,27 @@ function ajoutDesFilmsALaPageWeb(listeDesFilmsDeLaCategorieAAjouter, ancre){
         var ul = document.getElementById(ancre)
         console.log(ul)
         for (i=0; i<listeDesFilmsDeLaCategorieAAjouter.length; i++){
+            if(i<5){
+                const li = `<li class ="img-film active"> 
+                    <div class ="info_et_photo">
+                        <a href="#modal" class="open-modal" id="${listeDesFilmsDeLaCategorieAAjouter[i].id}"><img src="${listeDesFilmsDeLaCategorieAAjouter[i].image_du_film}">
+                        <p class="p_infos">En savoir plus</p></a>
+                    </div>
+                </li>`
+                
+                ul.insertAdjacentHTML("beforeend", li)
+            }
+            else{
+                const li = `<li class ="img-film"> 
+                    <div class ="info_et_photo">
+                        <a href="#modal" class="open-modal" id="${listeDesFilmsDeLaCategorieAAjouter[i].id}"><img src="${listeDesFilmsDeLaCategorieAAjouter[i].image_du_film}">
+                        <p class="p_infos">En savoir plus</p></a>
+                    </div>
+                </li>`
+                
+                ul.insertAdjacentHTML("beforeend", li)
 
-            const li = `<li> 
-                <div class ="info_et_photo">
-                    <a href="#modal" class="open-modal" id="${listeDesFilmsDeLaCategorieAAjouter[i].id}"><img src="${listeDesFilmsDeLaCategorieAAjouter[i].image_du_film}">
-                    <p class="p_infos">En savoir plus</p></a>
-                </div>
-            </li>`
-            
-            ul.insertAdjacentHTML("beforeend", li)
+            }
 
         }
 }
@@ -250,3 +262,54 @@ function openModal(){
     xhrTrois.open("GET", "http://localhost:8000/api/v1/titles/" + id, false);
     xhrTrois.send();
 }
+
+// gestion du défilement avec les flèches
+
+const fleches = document.querySelectorAll(".btn-defi")
+const tousLesLiDuSite = document.getElementsByClassName('img-film')
+const nbFilmscaches = 1
+var count = 0
+
+
+fleches.forEach(defi => defi.addEventListener("click", defilerLesImages))
+
+function defilerLesImages(){
+    
+    var id = this.id
+    var numero = id.charAt(0)
+    var starter = ""
+
+    
+
+    
+
+   
+    starter = (numero-1)*7
+
+
+    if(id == (numero +'-gauche') && tousLesLiDuSite[starter].classList.value == "img-film active"){
+        count = 0
+    }
+    if(id == (numero +'-gauche') && tousLesLiDuSite[starter].classList.value != "img-film active"){
+        if(count>nbFilmscaches){
+            count=0
+        }
+        tousLesLiDuSite[starter + 1 - count].classList.add("active")
+        tousLesLiDuSite[starter + 6 - count].classList.remove("active")
+        count++;
+    }
+    if(id == (numero +'-droite') && tousLesLiDuSite[starter+6].classList.value == "img-film active"){
+        count = 0
+    }
+    if(id == (numero +'-droite') && tousLesLiDuSite[starter+6].classList.value != "img-film active"){
+        if(count>nbFilmscaches){
+            count=0
+        }
+        tousLesLiDuSite[starter + 0 + count].classList.remove("active")
+        tousLesLiDuSite[starter + 5 + count].classList.add("active")
+        count++;
+    }
+    
+        
+    }
+
