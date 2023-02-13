@@ -209,6 +209,8 @@ ajoutDesFilmsALaPageWeb(listeDesFIlmsDeLaCategorieAventure, "troisieme_categorie
 ajoutDesFilmsALaPageWeb(listeDesFIlmsDeLaCategorieDrama, "quatrieme_categorie" )
 
 
+// Gestion de la fenêtre modal 
+
 const modal = document.querySelector(".modal");
 
 const openmodal = document.querySelectorAll(".open-modal");
@@ -279,9 +281,6 @@ function defilerLesImages(){
     var numero = id.charAt(0)
     var starter = ""
 
-    
-
-    
 
    
     starter = (numero-1)*7
